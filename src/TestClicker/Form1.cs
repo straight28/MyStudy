@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,10 @@ namespace TestClicker
 {
     public partial class Form1 : Form
     {
+
+        Dictionary<string, string> _dData = new Dictionary<string, string>();
+        CXMLControl _xml = new CXMLControl();
+        string strPath = Application.StartupPath + "\\Save.txt";
 
         private double Tick = 0;
         private double Total = 0;
@@ -32,6 +37,23 @@ namespace TestClicker
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
+            if (File.Exists(strPath))
+            {
+                // 파일이 있을 경우 file loading
+                _dData = _xml.fXML_Reader(strPath);
+                
+                Tick = double.Parse(_dData[CXMLControl._TICK]);
+                Total = double.Parse(_dData[CXMLControl._TOTAL]);
+                l1Level = int.Parse(_dData[CXMLControl._LEVEL_1]);
+                l3Level = int.Parse(_dData[CXMLControl._LEVEL_3]);
+                l50Level = int.Parse(_dData[CXMLControl._LEVEL_50]);
+
+                l1Add = 1 * l1Level;
+                l3Add = 3 * l3Level;
+                l50Add = 50 * l50Level;
+            }
+
             Timer oTimer = new Timer();
 
             oTimer.Enabled = true;
@@ -41,6 +63,19 @@ namespace TestClicker
             oTimer.Tick += OTimer_Tick;
             oTimer.Start();
         }
+
+        private void Form1_FormClosed(object sender, System.Windows.Forms.FormClosedEventArgs e)
+        {
+            _dData.Clear();
+            _dData.Add(CXMLControl._TICK, Tick.ToString());
+            _dData.Add(CXMLControl._TOTAL, Total.ToString());
+            _dData.Add(CXMLControl._LEVEL_1, l1Level.ToString());
+            _dData.Add(CXMLControl._LEVEL_3, l3Level.ToString());
+            _dData.Add(CXMLControl._LEVEL_50, l50Level.ToString());
+
+            _xml.fXML_Writer(strPath, _dData);
+        }
+
 
         // 타이머에서 호출 할 Event (interval 간격 기준)
         private void OTimer_Tick(object sender, EventArgs e)

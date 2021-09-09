@@ -159,6 +159,7 @@ namespace TestClicker
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
+            this.FormClosed += Form1_FormClosed;
 
         }
 
