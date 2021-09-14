@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Windows.Forms;
 
 namespace SeleniumStudy
@@ -64,8 +65,40 @@ namespace SeleniumStudy
 
                 //XPath 카피 (주의점, 큰 따옴표를 작은따옴표로 변경해야함)
                 var element = _driver.FindElementByXPath("//*[@id='group25']");
-                element.Click();
+                
+                // 둘 다 같은 기능
+                //element.Click();
+                _driver.ExecuteScript("arguments[0].click();", element);
 
+                _driver.SwitchTo().DefaultContent();
+                _driver.SwitchTo().Frame("fraAMAKMain");
+                _driver.SwitchTo().Frame("maincontent");
+                _driver.SwitchTo().Frame("tabContents1_contents_tabs1_body");
+                
+                var table = _driver.FindElementByXPath("//*[@id='grdMain_body_table']");
+                var tbody = table.FindElement(By.TagName("tbody"));
+                var trs = tbody.FindElements(By.TagName("tr"));
+
+                foreach (var tr in trs)
+                {
+                    var ths = tr.FindElements(By.TagName("th"));
+
+                    foreach (var th in ths)
+                    {
+                        Trace.WriteLine("th: " + th.Text);
+                    }
+
+                    var tds = tr.FindElements(By.TagName("td"));
+
+                    foreach (var td in tds)
+                    {
+                        Trace.WriteLine("td: " + td.Text);
+                    }
+                }
+
+                Console.WriteLine("완료완료");
+                Console.WriteLine("완료완료");
+                Console.WriteLine("완료완료");
 
                 Application.Exit();
             }
