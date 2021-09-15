@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExamForm", "ExamForm", "{D8
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeleniumStudy", "src\SeleniumStudy\SeleniumStudy.csproj", "{366571B1-C1F2-4556-8641-02BE1D6977D4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeleniumDropDown", "src\SeleniumDropDown\SeleniumDropDown.csproj", "{ACE1FEEB-2A86-4996-838B-EEEC0F594028}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{366571B1-C1F2-4556-8641-02BE1D6977D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{366571B1-C1F2-4556-8641-02BE1D6977D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{366571B1-C1F2-4556-8641-02BE1D6977D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACE1FEEB-2A86-4996-838B-EEEC0F594028}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACE1FEEB-2A86-4996-838B-EEEC0F594028}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACE1FEEB-2A86-4996-838B-EEEC0F594028}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACE1FEEB-2A86-4996-838B-EEEC0F594028}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -43,6 +49,7 @@ Global
 		{D93475E8-9AB6-46F5-A324-D21D53C31706} = {DAFC452E-D7FD-4519-BAC9-FB4C109A49C3}
 		{D8894D1A-1DE0-4492-BBFC-35C54A95C963} = {DAFC452E-D7FD-4519-BAC9-FB4C109A49C3}
 		{366571B1-C1F2-4556-8641-02BE1D6977D4} = {D93475E8-9AB6-46F5-A324-D21D53C31706}
+		{ACE1FEEB-2A86-4996-838B-EEEC0F594028} = {D93475E8-9AB6-46F5-A324-D21D53C31706}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F9752345-4AFD-4844-ABB4-C578099B9338}
