@@ -35,9 +35,8 @@ namespace TestCral
         private string Request_Json()
         {
             string result = null;
-            string url = "datasourceId=1a0ef0b6-3ee6-4e44-a415-7a313d5bd771";
+            string url = "https://www.lme.com/api/trading-data/day-delayed?datasourceId=1a0ef0b6-3ee6-4e44-a415-7a313d5bd771";
             Console.WriteLine("url : " + url);
-        //https://www.lme.com/api/trading-data/day-delayed?
 
             try
             {
@@ -54,12 +53,6 @@ namespace TestCral
                 Console.WriteLine(ex.Message);
             }
 
-
-            var start = result.IndexOf("Rows");
-            var end = result.IndexOf("Title");
-
-            result = result.Substring(end - start);
-
             return result;
         }
 
@@ -67,11 +60,20 @@ namespace TestCral
         {
             DataTable dt = new DataTable();
 
-            var array = JArray.Parse(json);
+            var array = JObject.Parse(json);
 
-            Console.WriteLine("test");
-            Console.WriteLine("test");
-            Console.WriteLine("test");
+            Console.WriteLine("test1 " + array["Rows"][0]);
+
+            var array1 = array["Rows"][0];
+
+            Console.WriteLine("test2 " + array1["RowTitle"]);
+
+            var array2 = array1["Values"];
+
+            Console.WriteLine("test3 " + array2[0]);
+            Console.WriteLine("test3 " + array2[1]);
+
+
 
         }
 
