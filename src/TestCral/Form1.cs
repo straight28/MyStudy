@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,16 +27,18 @@ namespace TestCral
         private void GetHtmlString()
         {
 
-            var test = Request_Json();
-            ParseJson(test);
-            Console.WriteLine(test);
+            // var test = Request_Json();
+            // ParseJson(test);
+            // Console.WriteLine(test);
 
+            WebRequestTest();
         }
 
         private string Request_Json()
         {
             string result = null;
-            string url = "https://www.lme.com/api/trading-data/day-delayed?datasourceId=1a0ef0b6-3ee6-4e44-a415-7a313d5bd771";
+            string url = "https://www.lme.com/api/trading-data/day-delayed?" +
+                "datasourceId=1a0ef0b6-3ee6-4e44-a415-7a313d5bd771";
             Console.WriteLine("url : " + url);
 
             try
@@ -72,18 +75,20 @@ namespace TestCral
 
             Console.WriteLine("test3 " + array2[0]);
             Console.WriteLine("test3 " + array2[1]);
-
-
-
         }
 
-
+        
         private string WebRequestTest()
         {
-            WebRequest request = WebRequest.Create("https://www.lme.com/en/Metals/Non-ferrous/LME-Aluminium#Trading+day+summary"); // 호출할 url
-            request.Method = "GET";
 
-            WebResponse response = request.GetResponse();
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://www.investing.com/indices/us-spx-500-historical-data");
+            
+            request.Accept = @"text/html, application/xhtml+xml, */*";
+            request.Headers.Add("Accept-Language", "en-GB");
+            request.UserAgent = @"Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)";
+            
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             Stream dataStream = response.GetResponseStream();
             StreamReader reader = new StreamReader(dataStream);
 
@@ -92,8 +97,11 @@ namespace TestCral
             Console.WriteLine(responseFromServer); // response 출력
 
 
-            var start = responseFromServer.IndexOf("data-set-table__table");
-            var end = responseFromServer.IndexOf("data-set-table__supporting");
+            var start = responseFromServer.IndexOf("<div id=\"results_box\">");
+            var end = responseFromServer.IndexOf("historicalTblFooter");
+
+            var sub = responseFromServer.Substring(start, (end - start));
+
 
             var content = responseFromServer.Substring(start, end);
 
