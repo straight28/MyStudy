@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31605.320
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32228.430
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DAFC452E-D7FD-4519-BAC9-FB4C109A49C3}"
 EndProject
@@ -24,6 +24,13 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChromeBrowserOpen", "src\ChromeBrowserOpen\ChromeBrowserOpen.csproj", "{54D267A9-EF60-4AB0-A379-583022E69101}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCral", "src\TestCral\TestCral.csproj", "{0B037784-448D-499A-9D78-FA0D81EA2E4E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExamTest", "ExamTest", "{049581B8-D46B-4725-B6BC-F0BBE35FB75F}"
+	ProjectSection(SolutionItems) = preProject
+		TextFile1.MD = TextFile1.MD
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpTest", "src\CSharpTest\CSharpTest.csproj", "{355EAB0F-2493-487C-9CD2-466AE733C411}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +70,10 @@ Global
 		{0B037784-448D-499A-9D78-FA0D81EA2E4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B037784-448D-499A-9D78-FA0D81EA2E4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B037784-448D-499A-9D78-FA0D81EA2E4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{355EAB0F-2493-487C-9CD2-466AE733C411}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{355EAB0F-2493-487C-9CD2-466AE733C411}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{355EAB0F-2493-487C-9CD2-466AE733C411}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{355EAB0F-2493-487C-9CD2-466AE733C411}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -78,6 +89,8 @@ Global
 		{0B8CE222-F219-478C-A76C-4BFEEF9E2839} = {D8894D1A-1DE0-4492-BBFC-35C54A95C963}
 		{54D267A9-EF60-4AB0-A379-583022E69101} = {D93475E8-9AB6-46F5-A324-D21D53C31706}
 		{0B037784-448D-499A-9D78-FA0D81EA2E4E} = {D8894D1A-1DE0-4492-BBFC-35C54A95C963}
+		{049581B8-D46B-4725-B6BC-F0BBE35FB75F} = {DAFC452E-D7FD-4519-BAC9-FB4C109A49C3}
+		{355EAB0F-2493-487C-9CD2-466AE733C411} = {049581B8-D46B-4725-B6BC-F0BBE35FB75F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F9752345-4AFD-4844-ABB4-C578099B9338}
