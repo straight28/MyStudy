@@ -229,6 +229,18 @@ namespace CSharpTest
                 EnterGame(ref player);
 
             }
+
+            
+            string name = "Potter Harry";
+
+            bool found = name.Contains("Potter");
+            int index = name.IndexOf('z');
+
+            string[] names = name.Split(new char[] {' '});
+
+
+
+
         }
 
 
