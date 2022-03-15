@@ -6,7 +6,12 @@ namespace CSharpTest2
     {
         static void Main(string[] args)
         {
-            Player User = new Knight();
+            Game game = new Game();
+
+            while (true)
+            {
+                game.Process();
+            }
         }
     }
 }
