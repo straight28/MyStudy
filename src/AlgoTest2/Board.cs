@@ -14,6 +14,8 @@ namespace AlgoTest2
         public TileType[,] Tile { get; private set; }
         public int Size { get; private set; }
 
+        public int DestX { get; private set; }
+        public int DestY { get; private set; }
 
         Player _player;
 
@@ -29,10 +31,13 @@ namespace AlgoTest2
             if (size % 2 == 0)
                 return;
 
+            _player = player;
+
             Tile = new TileType[size, size];
             Size = size;
 
-            _player = player;
+            DestX = Size - 2;
+            DestY = Size - 2;
 
             // GenerateByBinaryTree();
             GenerateBySideWinder();
@@ -112,7 +117,6 @@ namespace AlgoTest2
             {
                 for (int x = 0; x < Size; x++)
                 {
-                    //if (x == 0 || x == Size - 1 || y == 0 || y == size - 1)
                     if (x % 2 == 0 || y % 2 == 0)
                     {
                         Tile[y, x] = TileType.Wall;
@@ -134,8 +138,11 @@ namespace AlgoTest2
 
                 for (int x = 0; x < Size; x++)
                 {
-                    //if (x == 0 || x == Size - 1 || y == 0 || y == size - 1)
                     if (x % 2 == 0 || y % 2 == 0)
+                        continue;
+
+                    //y 와 x 모두 마지막 벽이라면 
+                    if (y == Size - 2 && x == Size - 2)
                         continue;
 
                     // 우측 맨 마지막이 벽이라면
@@ -165,7 +172,6 @@ namespace AlgoTest2
                         Tile[y + 1, x - randomIndex * 2] = TileType.Empty;
                         count = 1;
                     }
-
                 }
             }
         }
@@ -182,6 +188,8 @@ namespace AlgoTest2
                     // 플레이어 좌표를 가지고 와서, 그 좌표랑 현재 y, x가 일치하면 플레이어 전용 색상 표시.
                     if (y == _player.PosY && x == _player.PosX)
                         Console.ForegroundColor = ConsoleColor.Blue;
+                    else if (y == DestY && x == DestX)
+                        Console.ForegroundColor = ConsoleColor.Yellow;
                     else
                         Console.ForegroundColor = GetTileColor(Tile[y, x]);
 
