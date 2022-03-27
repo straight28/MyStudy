@@ -7,7 +7,8 @@ namespace AlgoTest2
         static void Main(string[] args)
         {
             Board board = new Board();
-            board.Initialize(25);
+            Player player = new Player();
+            board.Initialize(25, player);
            
 
             while (true) 
